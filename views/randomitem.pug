@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  - let image_names = ['fireball.png', 'frostbolt.png', 'earthshatter.png', 'lightningball.png', 'shadowspike.png']
+  - for (let i = 0; i < 3; i++) {
+    - let index = Math.floor(Math.random() * 5)
+    - let name = image_names[index]
+    img(src=`/images/${name}`, alt=`${name}`, height="300", width="300")
+  - }
