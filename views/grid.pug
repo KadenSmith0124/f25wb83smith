@@ -2,4 +2,20 @@ extends layout
 
 block content
   h1= title
-  
+  p Rows: #{query.rows}, Cols: #{query.cols}
+  - let rows = Number(query.rows)
+  - let cols = Number(query.cols)
+  if !Number.isInteger(rows) || !Number.isInteger(cols)
+    p Invalid input: rows and cols must be integers.
+  else if rows < 3 || rows > 13
+    p Invalid input: rows must be between 3 and 13.
+  else if cols < 3 || cols > 13
+    p Invalid input: cols must be between 3 and 13.
+  else
+    table#outer(class="table table-bordered")
+      - for (let i = 0; i < rows; i++) {
+        tr#middle
+          - for (let j = 0; j < cols; j++) {
+            td= i + (2 * j)
+          - }
+      - }
