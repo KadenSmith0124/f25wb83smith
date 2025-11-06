@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1= title
-  
+  -
+    let results = [
+      { incantation: 'Ignis', mana_cost: 10, effect: 'Creates a burst of fire' },
+      { incantation: 'Water Veil', mana_cost: 8, effect: 'Summons a protective water barrier' },
+      { incantation: 'Land Spike', mana_cost: 12, effect: 'Launches stone spikes from the ground' }
+    ]
+  .container-fluid
+    .row
+      each spell in results
+        .col-sm-2
+          p
+            strong Incantation:
+            |  #{spell.incantation}
+          p
+            strong Mana Cost:
+            |  #{spell.mana_cost}
+          p
+            strong Effect:
+            |  #{spell.effect}
